@@ -1,0 +1,13 @@
+class Solution:
+    def maxProfit(self, prices):
+        buy_day = 0  # Buy
+        sell_day = 1  # Sell
+        max_profit = 0
+        while sell_day < len(prices):
+            current_profit = prices[sell_day] - prices[buy_day]  # Our current profit
+            if prices[buy_day] < prices[sell_day]:
+                max_profit = max(current_profit, max_profit)
+            else:
+                buy_day = sell_day
+            sell_day += 1
+        return max_profit
